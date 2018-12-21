@@ -29,10 +29,8 @@ namespace Vertical.Persistance.Infrastructure
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(basePath)
                 .AddJsonFile("appsettings.json")
-                .AddJsonFile("appsettings.Local.json",
-                    true)
-                .AddJsonFile($"appsettings.{environmentName}.json",
-                    true)
+                .AddJsonFile("appsettings.Local.json", true)
+                .AddJsonFile($"appsettings.{environmentName}.json", true)
                 .AddEnvironmentVariables()
                 .Build();
 
@@ -47,8 +45,7 @@ namespace Vertical.Persistance.Infrastructure
                 throw new ArgumentException($"Connection string '{ConnectionStringName}' is null or empty.",
                     nameof(connectionString));
 
-            Console.WriteLine(
-                $"DesignTimeDbContextFactoryBase.Create(string): Connection string: '{connectionString}'.");
+            Console.WriteLine($"DesignTimeDbContextFactoryBase.Create(string): Connection string: '{connectionString}'.");
 
             var optionsBuilder = new DbContextOptionsBuilder<TContext>();
 

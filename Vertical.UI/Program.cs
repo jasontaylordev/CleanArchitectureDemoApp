@@ -22,8 +22,6 @@ namespace Vertical.UI
                 {
                     var context = scope.ServiceProvider.GetService<VerticalDbContext>();
                     context.Database.Migrate();
-
-                    VerticalInitializer.Initialize(context);
                 }
                 catch (Exception ex)
                 {

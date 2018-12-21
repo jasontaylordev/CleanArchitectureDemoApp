@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using Vertical.Domain.Entities;
-using Vertical.Persistance.Extensions;
 
 namespace Vertical.Persistance
 {
@@ -12,11 +11,12 @@ namespace Vertical.Persistance
         }
 
         public DbSet<Employee> Employees { get; set; }
+
         public DbSet<Department> Departments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyAllConfigurations();
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(VerticalDbContext).Assembly);
         }
     }
 }

@@ -32,16 +32,18 @@ namespace Vertical.Persistance.Configurations
                 .HasMaxLength(800)
                 .IsUnicode(false);
 
-            builder.Property(e => e.IsActive)
-                .HasColumnType("(bit)");
+            // This is not right - know the conventions - this will happen automatically.
+            //builder.Property(e => e.IsActive)
+            //    .HasColumnType("(bit)");
             
             //many to one relationship
 
-            builder.HasOne(x => x.Department)
-                .WithMany(x => x.Employees)
-                .IsRequired()
-                .HasForeignKey(x => x.DeptId)
-                .OnDelete(DeleteBehavior.SetNull);
+            // This is not valid, EF Core complains when trying to apply the migration.
+            //builder.HasOne(x => x.Department)
+            //    .WithMany(x => x.Employees)
+            //    .IsRequired()
+            //    .HasForeignKey(x => x.DeptId)
+            //    .OnDelete(DeleteBehavior.SetNull);
         }
     }
 }
